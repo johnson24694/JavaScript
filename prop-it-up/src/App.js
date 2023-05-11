@@ -14,6 +14,7 @@ function App() {
           lastName={ "Doe" }
           age={36}
           hairColor={"blond"}/>
+          
         <PersonCard 
           firstName={ "Greg" }
           lastName={"Peters"}
