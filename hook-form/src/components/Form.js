@@ -9,10 +9,6 @@ const Form = (props) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    
-
-    
-     
     return (
         <form>
             
