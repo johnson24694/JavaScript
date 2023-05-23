@@ -1,5 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 
 function App() {
@@ -7,19 +9,12 @@ function App() {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=807')
-      .then(response => {
+    axios.get('https://pokeapi.co/api/v2/pokemon?limit=807')
+      .then(response => {setPokemonList(response.data.results)})
+      .catch((err) => console.log(err));
 
-        return response.json()
-      })
-      .then(response => {
-        setPokemonList(response.results)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      }, []);
       
-  }, []);
   
   
   return (
@@ -29,7 +24,7 @@ function App() {
 
       <ul>
         {
-          pokemonList.map((pokemon, index) => {
+          pokemonList.length > 0 && pokemonList.map((pokemon, index) => {
             return (
               <li key={index}>{pokemon.name}</li>
             )
