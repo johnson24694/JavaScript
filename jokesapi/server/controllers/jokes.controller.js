@@ -32,7 +32,7 @@ module.exports.updateJoke = (req, res) => {
     Joke.findOneAndUpdate(
         { _id: req.params._id },
         req.body,
-        { new: true, runValidators: true }
+        { new: true, runValidators: true, }
     )
         .then(updatedJoke => {
             res.json({ joke: updatedJoke })
@@ -42,7 +42,7 @@ module.exports.updateJoke = (req, res) => {
         });}
  
 module.exports.deleteJoke = (req, res) => {
-    Joke.deleteJoke({ _id: req.params._id })
+    Joke.deleteOne({ _id: req.params._id })
         .then(result => {
             res.json({ result: result })
         })
