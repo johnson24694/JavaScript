@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { Button, Table } from 'react-bootstrap';
 
 
 
@@ -8,32 +9,34 @@ const ViewAllRecipes = () => {
 
     useEffect( () => {
         axios.get('http://localhost:8000/api/recipes')
-        .then(response => {
-            console.log(response);
-            setRecipeList(response.data)
+        .then(res => {
+            console.log(res);
+            setRecipeList(res.data)
         })},[]
     )
 
 
     return (
-        <div>
-            <table>
+        <div className="mt-5 px-4 py-4">
+            <table className = "table table-striped table-hover border mt-5 px-4 py-4">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Cook Time</th>
-                        <th>Actions</th>
+                    <tr className="h1 display-6">
+                        <th>Recipe Name</th>
+                        <th>Cook Time (Minutes)</th>
+                        <th>Instructions</th>
                     </tr>
+                    
                 </thead>
                 <tbody>
                     {
                     recipeList.map((recipeList, index)=>{
                     return (
-                        <div key={index}>
-                            <tr>{recipeList.name}</tr> 
-                            <tr>{recipeList.cookTime}</tr>
-                            <tr>{recipeList.instructions}</tr>
-                        </div>
+                        <tr className="table-warning" key={index}>
+                            <td>{recipeList.name}</td> 
+                            <td>{recipeList.cookTime}</td>
+                            <td>{recipeList.instructions}</td>
+                            <td>view edit delete</td>
+                        </tr>
                          )})   
                     }    
                         

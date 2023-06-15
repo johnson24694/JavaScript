@@ -6,11 +6,11 @@ module.exports.createRecipe = (req, res) => {
         .catch(err => res.json(err));
 }
 
-module.exports.getAllRecipes = (request, response) => {
+module.exports.getAllRecipes = (req, res) => {
     Recipe.find({})
         .then(allRecipes => {
             console.log(allRecipes);
-            response.json(allRecipes);
+            res.json(allRecipes);
         })
         .catch(err => {
             console.log(err)

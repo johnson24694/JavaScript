@@ -18,8 +18,8 @@ const ViewOneRecipe = (props) => {
 
 
     return (
-        <div className="detail-component">
-            <h2>Recipe Detail</h2>
+        <div className="mt-5 px-3 py-4">
+            <h2 className="h1 display-2">Recipe Detail</h2>
             <p>Name:  {recipeList.name}</p>
             <p>Description:  {recipeList.description}</p>
             <p>Instructions:  {recipeList.instructions}</p>
