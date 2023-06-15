@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
+
 const Main = (props) => {
     
     const [product, setProduct] = useState([]);
@@ -14,6 +15,7 @@ const Main = (props) => {
            <ProductForm product={product} setProduct={setProduct} />
             <hr/>
            <ProductList product={product} setProduct={setProduct} removeFromDom={removeFromDom}/>
+           
         </div>
     )
 }

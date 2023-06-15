@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useParams, useNavigate} from "react-router-dom";
 
 const Detail = (props) => {
-    const [product, setProduct] = useState({})
+    const [ product, setProduct] = useState({});
     const {id} = useParams();
     const navigate = useNavigate(); 
 
@@ -16,8 +16,8 @@ const Detail = (props) => {
             .catch( err => console.log(err) );
     }, []);
 
-    const deleteHandler = (id) => {
-        axios.delete(`http://localhost:8000/api/products/${id}`)
+    const deleteProduct = () => {
+        axios.delete("http://localhost:8000/api/products/" + id)
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
@@ -34,8 +34,9 @@ const Detail = (props) => {
             <p>Title:  {product.title}</p>
             <p>Price:  ${product.price}</p>
             <p>Description:  {product.description}</p>
-            <button onClick={() => deleteHandler(product._id)}>Delete Product</button>
+            <button onClick={deleteProduct}>Delete Product</button>
         </div>
+        
     );
 }
 export default Detail;

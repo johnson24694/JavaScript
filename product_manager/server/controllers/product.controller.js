@@ -32,7 +32,7 @@ module.exports.getProduct = (request, response) => {
 }
 
 module.exports.updateProduct = (request, response) => {
-    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true, runValidators: true})
         .then(updatedProduct => response.json(updatedProduct))
         .catch(err => response.json(err))
 }
