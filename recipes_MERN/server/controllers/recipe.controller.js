@@ -2,9 +2,13 @@ const Recipe = require('../models/recipe.model');
 
 module.exports.createRecipe = (req, res) => {
     Recipe.create(req.body) 
-        .then(newRecipe => res.json(newRecipe))
-        .catch(err => res.json(err));
-}
+        .then((newRecipe) => {
+            res.json({ newRecipe });
+        })
+        .catch((err) => {
+            res.status(400).json({ err });
+        });
+    };
 
 module.exports.getAllRecipes = (req, res) => {
     Recipe.find({})
@@ -18,20 +22,20 @@ module.exports.getAllRecipes = (req, res) => {
         })
 }
 
-module.exports.getOneRecipeById = (request, response) => {
-    Recipe.findOne({_id:request.params.id})
-        .then(recipe => response.json(recipe))
-        .catch(err => response.json(err));
+module.exports.getOneRecipeById = (req, res) => {
+    Recipe.findOne({_id:req.params.id})
+        .then(recipe => res.json(recipe))
+        .catch(err => res.json(err));
 }
 
-module.exports.updateRecipe = (request, response) => {
-    Product.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
-        .then(updatedRecipe => response.json(updatedRecipe))
-        .catch(err => response.json(err))
+module.exports.updateRecipe = (req, res) => {
+    Recipe.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators:true})
+        .then(updatedRecipe => res.json(updatedRecipe))
+        .catch(err => res.status(400).json(err))
 }
 
-module.exports.deleteRecipe = (request, response) => {
-    Product.deleteOne({ _id: request.params.id })
-        .then(deleteConfirmation => response.json(deleteConfirmation))
-        .catch(err => response.json(err))
+module.exports.deleteRecipe = (req, res) => {
+    Recipe.deleteOne({ _id: req.params.id })
+        .then(deleteConfirmation => res.json(deleteConfirmation))
+        .catch(err => res.json(err))
 }

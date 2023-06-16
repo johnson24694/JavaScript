@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import CreateForm from './components/CreateForm';
 import ViewAllRecipes from './components/ViewAllRecipes';
 import ViewOneRecipe from './components/ViewOneRecipe';
+import EditForm from './components/EditForm';
+
 
 
 import './App.css';
@@ -14,7 +16,8 @@ function App() {
               <Routes>
                 <Route element={<ViewAllRecipes/>} path="/" default />
                 <Route element={<CreateForm/>} path="/recipes/new" /> 
-                <Route element={<ViewOneRecipe/>} path="/recipes/:id"/>
+                <Route element={<ViewOneRecipe/>} path="/recipe/:id"/>
+                <Route element={<EditForm/>} path="/recipe/:id/edit"/>
               </Routes>
         </BrowserRouter>
       
