@@ -12,7 +12,7 @@ function App() {
     <div className="App">
         <BrowserRouter>
               <Routes>
-                <Route element={<Main/>} path="/product" default />
+                <Route element={<Main/>} path="/" default />
                 <Route element={<Detail/>} path="/product/:id" /> 
                 <Route element={<Update/>} path="/product/edit/:id"/>
               </Routes>
