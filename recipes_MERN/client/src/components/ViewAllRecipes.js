@@ -8,6 +8,10 @@ import { Button, Table } from 'react-bootstrap';
 const ViewAllRecipes = (props) => {
     const [recipeList, setRecipeList] = useState([])
     const {id} = useParams();
+    
+    const removeFromDom = recipeId => {
+        setRecipe(recipe.filter(recipe => recipe._id != recipeId));
+    }
 
     useEffect( () => {
         axios.get('http://localhost:8000/api/recipes')
@@ -20,11 +24,12 @@ const ViewAllRecipes = (props) => {
     const handleDelete = (recipeID) => {
         axios.delete(`http://localhost:8000/api/recipe/${id}`)
             .then(res => {
+                removeFromDom(recipeId)
                 console.log("***delete successful***", res.data)
                 const filteredRecipesList = recipeList.filter(recipe => {
                     return recipe._id != recipeID});
                     setRecipeList(filteredRecipesList)
-                })
+                });
             
     }
 
