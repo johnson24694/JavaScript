@@ -50,4 +50,9 @@ module.exports = {
     logout: (req, res) => {
         res.clearCookie('userToken').json({message: 'You logged out.'})
     }
+
+    getAllUsers: (req, res) => {
+        
+    }
+
 }
