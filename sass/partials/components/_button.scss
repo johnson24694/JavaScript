@@ -1,0 +1,35 @@
+@mixin button() {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+
+    
+}
+
+@each $key, $val in $colors {
+    .btn-#{$key} {
+        background-color: $val;
+        color: whitesmoke;
+        @include button();
+        &:hover {
+            background-color: black;
+            color: $val;
+            border: 1px solid $val;
+        }
+        &:active {
+            background-color: $val;
+            color: whitesmoke;
+            border: 1px solid greenyellow;
+        }
+    }
+    .btn-outline-#{$key} {
+        background-color: whitesmoke;
+        color: $val;
+        @include button();
+        border: 1px solid $val;
+        &:hover {
+            background-color: black;
+        }
+    }
+}
