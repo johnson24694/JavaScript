@@ -49,9 +49,12 @@ module.exports = {
 
     logout: (req, res) => {
         res.clearCookie('userToken').json({message: 'You logged out.'})
-    }
+    },
 
     getAllUsers: (req, res) => {
+        User.find({})
+            .then(allUsers => res.json({users: allUsers}))
+            .catch(err => res.json({message: "Something went wrong", error: err}));
         
     }
 

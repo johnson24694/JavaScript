@@ -43,7 +43,7 @@ const Register = () => {
             </div>
             <div>
                 <label>Email:</label>
-                <input type="text" onChange={changeHandler} value={user.email} name="email" />
+                <input type="email" onChange={changeHandler} value={user.email} name="email" />
             </div>
             <div>
                 <label>Password:</label>

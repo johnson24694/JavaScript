@@ -31,7 +31,7 @@ const Login = (props) => {
         <form onSubmit={loginHandler}>
             <div>
                 <label>Email:</label>
-                <input type="text" onChange={changeHandler} value={userLogin.email} name="email"/>
+                <input type="email" onChange={changeHandler} value={userLogin.email} name="email"/>
             </div>
             <div>
                 <label>Password:</label>
